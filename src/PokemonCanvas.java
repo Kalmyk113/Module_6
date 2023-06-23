@@ -12,13 +12,9 @@ public class PokemonCanvas extends GCanvas {
     private int textX;
     private int textY;
 
-
-    /**
-     * Resets the display so that only the hangman scaffold appears
-     */
     public void reset() {
         // Sample graphics object
-        GLabel testMessage = new GLabel("\n");
+        GLabel testMessage = new GLabel("Pokedex testing\n");
         textX = TEXT_X_OFFSET;
         textY = TEXT_HEIGHT;
         add(testMessage, textX, textY);

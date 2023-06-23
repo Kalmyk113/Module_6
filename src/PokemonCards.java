@@ -1,6 +1,7 @@
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class PokemonCards {
@@ -18,12 +19,12 @@ public class PokemonCards {
                 String line = sc.nextLine();
                 String[] arr = line.split(",");
 
-                double atk = Double.parseDouble(arr[3]);
-                double def = Double.parseDouble(arr[4]);
-                double spd = Double.parseDouble(arr[5]);
+                int atk = Integer.parseInt(arr[3]);
+                int def = Integer.parseInt(arr[4]);
+                int spd = Integer.parseInt(arr[5]);
 
                 Class myClass = Class.forName(arr[0]);
-                Constructor constructor = myClass.getConstructor(String.class, String.class, double.class, double.class, double.class);
+                Constructor constructor = myClass.getConstructor(String.class, String.class, int.class, int.class, int.class);
                 Object instance = constructor.newInstance(arr[1], arr[2], atk, def, spd);
                 list.add((Pokemon) instance);
             }
@@ -34,8 +35,24 @@ public class PokemonCards {
     }
 
     public Pokemon get(int index){
-        System.out.println(list);
         return list.get(index);
+    }
+
+    public int getSize(){
+        return list.size();
+    }
+
+    public int searchPokemon(String inputPokemon){
+        for(int i=0; i<list.size(); i++){
+            if(Objects.equals(list.get(i).getName(), inputPokemon)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void showPokemon(String name){
+
     }
 
     public String toString() {

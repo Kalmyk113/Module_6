@@ -1,7 +1,9 @@
 public abstract class Pokemon {
 
     protected String name;
-    protected  String type;
+    protected String type;
+    protected String height;
+    protected String weight;
 
     protected int atk;
     protected int def;
@@ -9,6 +11,14 @@ public abstract class Pokemon {
 
     public String getName() {
         return name;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public String getWeight() {
+        return weight;
     }
 
     public String getType() {
