@@ -1,6 +1,6 @@
-public class Aegislash extends Pokemon{
-    public Aegislash(String weight, String height, int hp, int atk, int def, int spA, int spD, int spe, int totBS, String type){
-        this.name = "AEGISLASH";
+public class Blaziken extends Pokemon{
+    public Blaziken(String weight, String height, int hp, int atk, int def, int spA, int spD, int spe, int totBS, String type){
+        this.name = "BLAZIKEN";
         this.weight = weight;
         this.height = height;
         this.hp = hp;
