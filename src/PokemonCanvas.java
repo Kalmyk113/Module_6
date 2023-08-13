@@ -22,7 +22,7 @@ public class PokemonCanvas extends GCanvas {
         offset = 0;
         GRoundRect stats = new GRoundRect(30,400,getWidth()-60,220,40);
         stats.setFilled(true);
-        stats.setFillColor(typeColor(type1, 230));
+        stats.setFillColor(typeColor(type1, 230).darker());
         add(stats);
 
         for(int i=0; i<7; i++){
@@ -109,7 +109,7 @@ public class PokemonCanvas extends GCanvas {
 
             GRoundRect statBarFilled = new GRoundRect(375,10);
             statBarFilled.setFilled(true);
-            statBarFilled.setFillColor(Color.red);
+            statBarFilled.setFillColor(typeColor(type1));
 
             switch(i){
                 case 0:
@@ -166,17 +166,37 @@ public class PokemonCanvas extends GCanvas {
     public void displayTypeBg(String type){
         if(checkDualType(type)){
 
+            GRoundRect secondTypingBG = new GRoundRect(450,60,150,40,25);
+            secondTypingBG.setFilled(true);
+            secondTypingBG.setFillColor(typeColor(type2));
+
+            GLabel secondTypingLabel = new GLabel(type2);
+            secondTypingLabel.setFont("courier new-bold-22");
+
+            add(secondTypingBG);
+            add(secondTypingLabel,450+(secondTypingBG.getWidth()-secondTypingLabel.getWidth())/2,60+secondTypingLabel.getHeight());
+
             for(int x=0; x<5; x++){
                 for(int y=0; y<5; y++){
-                    GRect test = new GRect(120,120);
-                    test.setFillColor(typeColor(type2, 200));
-                    test.setFilled(true);
-                    add(test,-15 + 1.4*y*test.getWidth(),-5 +1.4*x*test.getHeight());
-                    test.rotate(45);
-                    test.sendToBack();
+                    GRect secondTypeBg = new GRect(120,120);
+                    secondTypeBg.setFilled(true);
+                    secondTypeBg.setFillColor(typeColor(type2, 200));
+                    add(secondTypeBg,-15 + 1.4*y* secondTypeBg.getWidth(),-5 +1.4*x* secondTypeBg.getHeight());
+                    secondTypeBg.rotate(45);
+                    secondTypeBg.sendToBack();
                 }
             }
         }
+
+        GRoundRect mainTypingBG = new GRoundRect(450,20,150,40,25);
+        mainTypingBG.setFilled(true);
+        mainTypingBG.setFillColor(typeColor(type1));
+
+        GLabel mainTypingLabel = new GLabel(type1);
+        mainTypingLabel.setFont("courier new-bold-22");
+
+        add(mainTypingBG);
+        add(mainTypingLabel,450+(mainTypingBG.getWidth()-mainTypingLabel.getWidth())/2,20+mainTypingLabel.getHeight());
 
         GImage typeBg = new GImage("assets/" + type1 + ".png");
         add(typeBg,getWidth()/2-typeBg.getWidth()/2,getHeight()/2-typeBg.getHeight()/2);
